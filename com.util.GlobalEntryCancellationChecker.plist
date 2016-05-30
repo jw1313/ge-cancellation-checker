@@ -1,0 +1,28 @@
+<!-- mv com.util.GlobalEntryCancellationChecker.plist /Library/LaunchDaemons -->
+<!-- cd /Library/LaunchDaemons -->
+<!-- sudo chmod 600 com.util.GlobalEntryCancellationChecker.plist && sudo chown root com.util.GlobalEntryCancellationChecker.plist -->
+<!-- sudo launchctl load -w com.util.GlobalEntryCancellationChecker.plist -->
+<!-- Make sure you set your path for launchctl, using: sudo launchctl setenv PATH $PATH -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.util.GlobalEntryCancellationChecker</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/nina/projects/ge-cancellation-checker/ge-checker-cron.py</string>
+        <string>--use-gmail</string>
+        <string>--notify-osx</string>
+    </array>
+    <key>StartInterval</key>
+    <!-- How often to run the job, in seconds. -->
+    <integer>1800</integer>
+    <key>StandardErrorPath</key>
+    <string>/tmp/ge-cancellation-checker.err</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/ge-cancellation-checker.out</string>
+    <key>RunAtLoad</key>
+        <true/>
+</dict>
+</plist>
